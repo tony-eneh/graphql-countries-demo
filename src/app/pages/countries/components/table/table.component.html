@@ -1,10 +1,12 @@
-<div class="overflow-x-auto relative flex flex-col gap-6 items-center">
+<app-error-message *ngIf="error" [error]="error" class="my-6" />
+
+<div class="overflow-x-auto relative items-center mb-4">
   <app-loading *ngIf="loading" />
-  <app-error-message *ngIf="error" [error]="error" />
 
   <table>
-    <thead class="text-gray-600 font-normal text-sm text-center">
+    <thead class="text-gray-600 font-normal text-sm">
       <tr>
+        <th></th>
         <th>Country</th>
         <th>Capital</th>
         <th>Code</th>
@@ -18,14 +20,14 @@
       >
         @let country = edge.node;
         <td>
-          <div class="flex items-center gap-4">
-            <img
-              [src]="country.flagImageUri"
-              alt="{{ country.name }}"
-              class="rounded-full h-6 w-6"
-            />
-            <span> {{ country.name }} </span>
-          </div>
+          <img
+            [src]="country.flagImageUri"
+            alt="{{ country.name }}"
+            class="rounded-full h-6 w-6"
+          />
+        </td>
+        <td>
+          {{ country.name }}
         </td>
         <td>
           {{ country.capital }}
@@ -41,11 +43,11 @@
       </tr>
     </tbody>
   </table>
-
-  <app-paginator
-    [reset]="refresh"
-    [totalCount]="countries?.totalCount"
-    [pageInfo]="countries?.pageInfo"
-    (pageChange)="handlePageChange($event)"
-  ></app-paginator>
 </div>
+
+<app-paginator
+  [reset]="refresh"
+  [totalCount]="countries?.totalCount"
+  [pageInfo]="countries?.pageInfo"
+  (pageChange)="handlePageChange($event)"
+/>

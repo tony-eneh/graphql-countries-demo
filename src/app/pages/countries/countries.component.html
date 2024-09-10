@@ -1,9 +1,12 @@
-<div class="flex flex-col items-center gap-7 p-4">
-  <div class="flex flex-col gap-1 items-center">
+<div class="flex flex-col items-center gap-7 p-4 w-screen">
+  <div class="flex flex-col gap-1 items-center text-center">
     <h1 class="text-4xl">Countries Directory</h1>
     <p class="text-xs">Find your favourite country</p>
   </div>
 
-  <app-countries-search-form (search)="query = $event; refresh.emit()" />
-  <app-countries-table [refresh]="refresh" [query]="query" />
+  <app-countries-search-form
+    (search)="query = $event; refresh.emit()"
+    class="w-full"
+  />
+  <app-countries-table [refresh]="refresh" [query]="query" class="w-full" />
 </div>
