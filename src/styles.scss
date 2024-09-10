@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-white font-sans text-gray-900 leading-normal tracking-normal;
+  }
+
+  .app-button {
+    @apply bg-gray-200 px-5 py-1 rounded-lg hover:text-white hover:bg-gray-900 hover:cursor-pointer disabled:hover:text-current disabled:hover:bg-gray-200 disabled:hover:cursor-not-allowed;
+  }
+}

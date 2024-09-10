@@ -1,0 +1,23 @@
+<form [formGroup]="form" class="flex flex-wrap gap-4 items-center">
+  <input
+    type="text"
+    formControlName="namePrefix"
+    placeholder="Country name"
+    class="border border-gray-200 px-2 rounded-md h-9"
+    (keyup.enter)="onSearch()"
+  />
+  <select
+    formControlName="currencyCode"
+    class="border border-gray-200 px-2 rounded-md h-9"
+    (change)="onSearch()"
+  >
+    <option value="" disabled class="text-gray-300">currency</option>
+    <option value="USD">USD</option>
+    <option value="NGN">NGN</option>
+    <option value="XOF">XOF</option>
+    <option value="EUR">EUR</option>
+    <option value="GBP">GBP</option>
+  </select>
+
+  <button (click)="onSearch()" class="app-button">Search</button>
+</form>

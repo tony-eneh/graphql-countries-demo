@@ -1,0 +1,25 @@
+<div *ngIf="totalCount" class="text-sm flex flex-wrap gap-8 justify-between items-center w-full">
+  <div>
+    Showing {{ startCount + 1 }} to {{ endCount }} of
+    {{ totalCount | number }} countries
+  </div>
+
+  <div class="flex items-center gap-8">
+    <button
+      type="button"
+      [disabled]="!pageInfo?.hasPreviousPage"
+      (click)="previousPage()"
+      class="app-button"
+    >
+      Previous
+    </button>
+    <button
+      type="button"
+      [disabled]="!pageInfo?.hasNextPage"
+      (click)="nextPage()"
+      class="app-button"
+    >
+      Next
+    </button>
+  </div>
+</div>

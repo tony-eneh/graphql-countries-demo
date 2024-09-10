@@ -1,0 +1,51 @@
+<div class="overflow-x-auto relative flex flex-col gap-6 items-center">
+  <app-loading *ngIf="loading" />
+  <app-error-message *ngIf="error" [error]="error" />
+
+  <table>
+    <thead class="text-gray-600 font-normal text-sm text-center">
+      <tr>
+        <th>Country</th>
+        <th>Capital</th>
+        <th>Code</th>
+        <th>Currency</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="let edge of countries?.edges"
+        class="text-sm text-nowrap border-t border-t-gray-100 h-10"
+      >
+        @let country = edge.node;
+        <td>
+          <div class="flex items-center gap-4">
+            <img
+              [src]="country.flagImageUri"
+              alt="{{ country.name }}"
+              class="rounded-full h-6 w-6"
+            />
+            <span> {{ country.name }} </span>
+          </div>
+        </td>
+        <td>
+          {{ country.capital }}
+        </td>
+        <td>
+          {{ country.code }}
+        </td>
+        <td>
+          <span *ngFor="let currencyCode of country.currencyCodes">
+            {{ currencyCode }}
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <app-paginator
+    [reset]="refresh"
+    [totalCount]="countries?.totalCount"
+    [pageInfo]="countries?.pageInfo"
+    (pageChange)="handlePageChange($event)"
+  ></app-paginator>
+</div>
