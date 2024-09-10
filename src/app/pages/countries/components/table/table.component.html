@@ -1,6 +1,6 @@
 <app-error-message *ngIf="error" [error]="error" class="my-6" />
 
-<div class="overflow-x-auto relative items-center mb-4">
+<div class="overflow-x-auto relative items-center mb-4 mx-auto w-fit">
   <app-loading *ngIf="loading" />
 
   <table>
@@ -50,4 +50,5 @@
   [totalCount]="countries?.totalCount"
   [pageInfo]="countries?.pageInfo"
   (pageChange)="handlePageChange($event)"
+  class="mx-auto"
 />
